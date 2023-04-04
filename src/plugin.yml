@@ -1,0 +1,8 @@
+main: scha.efer.technique.TechniquePlugin
+name: Technique
+version: 3.4.7
+author: Stagflasyon
+depend:
+  - ProtocolLib
+  - PlaceholderAPI
+  - HolographicDisplays

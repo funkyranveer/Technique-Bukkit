@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Technique-BUILT2022:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Technique_BUILT2022_jar</output-path>
+    <root id="archive" name="PotPvP-Bukkit.jar">
+      <element id="module-output" name="Technique-Bukkit" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/honcho-1.0-SNAPSHOT.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../Depends/lombok.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../Depends/mongo-java-driver-3.12.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/phoenix-lang-1.0-SNAPSHOT.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,22 @@
+MONGO:
+  DATABASE: "admin"
+  HOST: 127.0.0.1
+  PORT: 27017
+  AUTHENTICATION:
+    ENABLED: false
+    USERNAME: 'user'
+    PASSWORD: 'pass'
+TAB:
+  ENABLED: true
+  PROXY: "&5strafe.world"
+  HEADER: "&5&lNA-Practice"
+  FOOTER: "&fYou are playing on Strafe Network!"
+  COLORS:
+    MAIN: "&5&l"
+    ELEMENTS: "&f"
+    VALUES: "&f"
+
+SETTINGS:
+  DISCORD-WEBHOOK: ''
+ESSENTIAL:
+  SPAWN_LOCATION: world:0.5:101.0:0.5:181.29625:1.3300086
