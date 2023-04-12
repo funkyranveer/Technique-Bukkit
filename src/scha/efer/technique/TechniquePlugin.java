@@ -491,7 +491,7 @@ public class TechniquePlugin extends JavaPlugin {
                     ),
                     MongoCredential.createCredential(
                             mainConfig.getString("MONGO.AUTHENTICATION.USERNAME"),
-                            "blyngjietvznb1e", mainConfig.getString("MONGO.AUTHENTICATION.PASSWORD").toCharArray()
+                            "addpassword", mainConfig.getString("MONGO.AUTHENTICATION.PASSWORD").toCharArray()
                     ),
                     MongoClientOptions.builder().build()
             ).getDatabase(mainConfig.getString("MONGO.DATABASE"));
