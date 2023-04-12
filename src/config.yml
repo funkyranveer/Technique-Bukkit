@@ -8,13 +8,13 @@ MONGO:
     PASSWORD: 'pass'
 TAB:
   ENABLED: true
-  PROXY: "&5strafe.world"
-  HEADER: "&5&lNA-Practice"
-  FOOTER: "&fYou are playing on Strafe Network!"
+  PROXY: ""
+  HEADER: ""
+  FOOTER: ""
   COLORS:
-    MAIN: "&5&l"
-    ELEMENTS: "&f"
-    VALUES: "&f"
+    MAIN: ""
+    ELEMENTS: ""
+    VALUES: ""
 
 SETTINGS:
   DISCORD-WEBHOOK: ''
