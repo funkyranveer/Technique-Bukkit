@@ -7,8 +7,13 @@ import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoDatabase;
 import com.qrakn.honcho.Honcho;
 import com.qrakn.phoenix.lang.file.type.BasicConfigurationFile;
+import lombok.Getter;
+import org.bukkit.Difficulty;
+import org.bukkit.Material;
+import org.bukkit.event.Listener;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.metadata.Metadatable;
+import org.bukkit.plugin.java.JavaPlugin;
 import scha.efer.technique.arena.Arena;
 import scha.efer.technique.arena.ArenaType;
 import scha.efer.technique.arena.ArenaTypeAdapter;
@@ -51,9 +56,6 @@ import scha.efer.technique.event.impl.sumo.command.*;
 import scha.efer.technique.event.impl.tournament.command.*;
 import scha.efer.technique.event.impl.wipeout.WipeoutListener;
 import scha.efer.technique.event.impl.wipeout.WipeoutManager;
-import scha.efer.technique.ffa.commands.FFACommand;
-import scha.efer.technique.ffa.commands.LeaveCommand;
-import scha.efer.technique.ffa.listeners.FFAListener;
 import scha.efer.technique.kit.Kit;
 import scha.efer.technique.kit.KitEditorListener;
 import scha.efer.technique.kit.KitTypeAdapter;
@@ -65,7 +67,6 @@ import scha.efer.technique.match.command.StopSpectatingCommand;
 import scha.efer.technique.match.command.ViewInventoryCommand;
 import scha.efer.technique.match.kits.utils.ArmorClassManager;
 import scha.efer.technique.match.kits.utils.bard.EffectRestorer;
-import scha.efer.technique.mlgrush.listeners.MLGRushListeners;
 import scha.efer.technique.party.Party;
 import scha.efer.technique.party.PartyListener;
 import scha.efer.technique.party.command.*;
@@ -94,11 +95,6 @@ import scha.efer.technique.util.events.WorldListener;
 import scha.efer.technique.util.external.duration.Duration;
 import scha.efer.technique.util.external.duration.DurationTypeAdapter;
 import scha.efer.technique.util.external.menu.MenuListener;
-import lombok.Getter;
-import org.bukkit.Difficulty;
-import org.bukkit.Material;
-import org.bukkit.event.Listener;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Arrays;
 
@@ -218,10 +214,6 @@ public class TechniquePlugin extends JavaPlugin {
                 //Donator commands
                 new FlyCommand(),
                 new ToggleVisibilityCommand(),
-
-                //ffa commands
-                new FFACommand(),
-                new LeaveCommand(),
 
                 //practice commands
                 new RefillCommand(),
@@ -431,7 +423,6 @@ public class TechniquePlugin extends JavaPlugin {
                 new SumoListener(),
                 new BracketsListener(),
                 new LMSListener(),
-                new FFAListener(),
                 new ArenaSelectionListener(),
                 new JuggernautListener(),
                 new ParkourListener(),
@@ -445,7 +436,6 @@ public class TechniquePlugin extends JavaPlugin {
                 new MatchListener(),
                 new WorldListener(),
                 new QueueListener(),
-                new MLGRushListeners(),
                 new ArmorListener(),
                 new ClanListener()
         )) {
@@ -491,7 +481,7 @@ public class TechniquePlugin extends JavaPlugin {
                     ),
                     MongoCredential.createCredential(
                             mainConfig.getString("MONGO.AUTHENTICATION.USERNAME"),
-                            "blyngjietvznb1e", mainConfig.getString("MONGO.AUTHENTICATION.PASSWORD").toCharArray()
+                            mainConfig.getString("MONGO.AUTHENTICATION.DATABASE"), mainConfig.getString("MONGO.AUTHENTICATION.PASSWORD").toCharArray()
                     ),
                     MongoClientOptions.builder().build()
             ).getDatabase(mainConfig.getString("MONGO.DATABASE"));

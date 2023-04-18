@@ -8,9 +8,9 @@ MONGO:
     PASSWORD: 'pass'
 TAB:
   ENABLED: true
-  PROXY: "&5strafe.world"
-  HEADER: "&5&lNA-Practice"
-  FOOTER: "&fYou are playing on Strafe Network!"
+  PROXY: "&bserver.gg"
+  HEADER: "&b&lNA-Practice"
+  FOOTER: "&fYou are playing on Server Network!"
   COLORS:
     MAIN: "&5&l"
     ELEMENTS: "&f"

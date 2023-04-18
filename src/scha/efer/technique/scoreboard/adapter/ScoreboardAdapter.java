@@ -46,7 +46,7 @@ public class ScoreboardAdapter implements AssembleAdapter {
 
     @Override
     public String getTitle(Player player) {
-        return "&5&lStrafe &7⎜ &fTechnique";
+        return "&b&lPractice &7⎜ &fTechnique";
     } //⎜
 
     @Override
@@ -66,32 +66,32 @@ public class ScoreboardAdapter implements AssembleAdapter {
             if(profile.isSilent()) {
                 toReturn.add("&4&lYou are in silent mode!");
             }
-            toReturn.add("&fOnline: &5" + Bukkit.getServer().getOnlinePlayers().size());
-            toReturn.add("&fFighting: &5" + getInFights());
-            toReturn.add("&fQueueing: &5" + getInQueues());
+            toReturn.add("&fOnline: &b" + Bukkit.getServer().getOnlinePlayers().size());
+            toReturn.add("&fFighting: &b" + getInFights());
+            toReturn.add("&fQueueing: &b" + getInQueues());
             if (profile.isFollowMode()) {
-                toReturn.add("&fFollowing: &5" + profile.getFollowing().getName());
+                toReturn.add("&fFollowing: &b" + profile.getFollowing().getName());
             }
             if (!TechniquePlugin.getSumoManager().getCooldown().hasExpired()) {
-                toReturn.add("&fSumo: &5" + TimeUtil.millisToTimer(TechniquePlugin.getSumoManager().getCooldown().getRemaining()));
+                toReturn.add("&fSumo: &b" + TimeUtil.millisToTimer(TechniquePlugin.getSumoManager().getCooldown().getRemaining()));
             }
             if (!TechniquePlugin.getBracketsManager().getCooldown().hasExpired()) {
-                toReturn.add("&fBrackets: &5" + TimeUtil.millisToTimer(TechniquePlugin.getBracketsManager().getCooldown().getRemaining()));
+                toReturn.add("&fBrackets: &b" + TimeUtil.millisToTimer(TechniquePlugin.getBracketsManager().getCooldown().getRemaining()));
             }
             if (!TechniquePlugin.getLMSManager().getCooldown().hasExpired()) {
-                toReturn.add("&fFFA: &5" + TimeUtil.millisToTimer(TechniquePlugin.getLMSManager().getCooldown().getRemaining()));
+                toReturn.add("&fFFA: &b" + TimeUtil.millisToTimer(TechniquePlugin.getLMSManager().getCooldown().getRemaining()));
             }
             if (!TechniquePlugin.getParkourManager().getCooldown().hasExpired()) {
-                toReturn.add("&fParkour: &5" + TimeUtil.millisToTimer(TechniquePlugin.getParkourManager().getCooldown().getRemaining()));
+                toReturn.add("&fParkour: &b" + TimeUtil.millisToTimer(TechniquePlugin.getParkourManager().getCooldown().getRemaining()));
             }
             if (!TechniquePlugin.getWipeoutManager().getCooldown().hasExpired()) {
-                toReturn.add("&fWipeout: &5" + TimeUtil.millisToTimer(TechniquePlugin.getWipeoutManager().getCooldown().getRemaining()));
+                toReturn.add("&fWipeout: &b" + TimeUtil.millisToTimer(TechniquePlugin.getWipeoutManager().getCooldown().getRemaining()));
             }
             if (!TechniquePlugin.getSkyWarsManager().getCooldown().hasExpired()) {
-                toReturn.add("&fSkyWars: &5" + TimeUtil.millisToTimer(TechniquePlugin.getSkyWarsManager().getCooldown().getRemaining()));
+                toReturn.add("&fSkyWars: &b" + TimeUtil.millisToTimer(TechniquePlugin.getSkyWarsManager().getCooldown().getRemaining()));
             }
             if (!TechniquePlugin.getSpleefManager().getCooldown().hasExpired()) {
-                toReturn.add("&fSpleef: &5" + TimeUtil.millisToTimer(TechniquePlugin.getSpleefManager().getCooldown().getRemaining()));
+                toReturn.add("&fSpleef: &b" + TimeUtil.millisToTimer(TechniquePlugin.getSpleefManager().getCooldown().getRemaining()));
             }
 
             Clan clan = Clan.getByMember(player.getUniqueId());
@@ -102,16 +102,16 @@ public class ScoreboardAdapter implements AssembleAdapter {
                 //toReturn.add("&fClan W/L: &5" + clan.getWins() + "/" + clan.getLoses());
             }*/
             toReturn.add(" ");
-            toReturn.add("&fGlobal ELO: &5" + profile.getGlobalElo());
-            toReturn.add("&fLeague: &5" + profile.getEloLeague());
-            toReturn.add("&fCoins: &5" + playerData.getCoins());
+            toReturn.add("&fGlobal ELO: &b" + profile.getGlobalElo());
+            toReturn.add("&fLeague: &b" + profile.getEloLeague());
+            toReturn.add("&fCoins: &b" + playerData.getCoins());
 
 
             if (profile.getParty() != null) {
                 Party party = profile.getParty();
                 toReturn.add(" ");
-                toReturn.add("&fParty: &5(" + party.getPlayers().size() + " Players)");
-                toReturn.add("&fLeader: &5" + party.getLeader().getUsername());
+                toReturn.add("&fParty: &b(" + party.getPlayers().size() + " Players)");
+                toReturn.add("&fLeader: &b" + party.getLeader().getUsername());
 
             }
 
@@ -119,28 +119,28 @@ public class ScoreboardAdapter implements AssembleAdapter {
                 Tournament tournament = Tournament.CURRENT_TOURNAMENT;
                 String round = tournament.getRound() > 0 ? Integer.toString(tournament.getRound()) : "&fStarting";
                 toReturn.add("");
-                toReturn.add("&5Tournament &f(" + tournament.getTeamCount() + "v" + tournament.getTeamCount() + ")");
-                toReturn.add(" &f Kit: &5" + tournament.getLadder().getName());
-                toReturn.add(" &f Round: &5" + round);
-                toReturn.add((tournament.getTeamCount() > 1 ? " &fParties: &5" : "&fPlayers: &5") + tournament.getParticipatingCount());
+                toReturn.add("&fTournament &b(" + tournament.getTeamCount() + "v" + tournament.getTeamCount() + ")");
+                toReturn.add(" &f Kit: &b" + tournament.getLadder().getName());
+                toReturn.add(" &f Round: &b" + round);
+                toReturn.add((tournament.getTeamCount() > 1 ? " &fParties: &b" : "&fPlayers: &b") + tournament.getParticipatingCount());
             }
         } else if (profile.isInQueue()) {
             Queue queue = profile.getQueue();
             toReturn.clear();
             toReturn.add(CC.SB_BAR);
             toReturn.add("&fQueued for:");
-            toReturn.add("&5 " + queue.getQueueName());
-            toReturn.add("&f Queue Time: &5" + TimeUtil.millisToTimer(profile.getQueueProfile().getPassed()));
+            toReturn.add("&b " + queue.getQueueName());
+            toReturn.add("&f Queue Time: &b" + TimeUtil.millisToTimer(profile.getQueueProfile().getPassed()));
             toReturn.add("");
-            toReturn.add("&f Global Queued: &5" + getInQueues());
-            toReturn.add("&f " + queue.getKit().getName() +  " Queued: &5" + queue.getPlayers().size());
+            toReturn.add("&f Global Queued: &b" + getInQueues());
+            toReturn.add("&f " + queue.getKit().getName() +  " Queued: &b" + queue.getPlayers().size());
             if (queue.getQueueType().equals(QueueType.RANKED)) {
-                toReturn.add(" &fElo Range: &5" + profile.getQueueProfile().getMinRange() + " &f- &5" + profile.getQueueProfile().getMaxRange());
+                toReturn.add(" &fElo Range: &b" + profile.getQueueProfile().getMinRange() + " &f- &b" + profile.getQueueProfile().getMaxRange());
             }
         } else if (profile.isInFFA()) {
-            toReturn.add("&fIn FFA: &5" + getInFFAs());
-            toReturn.add("&fLeague: &5" + profile.getEloLeague());
-            toReturn.add("&fCoins: &5" + playerData.getCoins());
+            toReturn.add("&fIn FFA: &b" + getInFFAs());
+            toReturn.add("&fLeague: &b" + profile.getEloLeague());
+            toReturn.add("&fCoins: &b" + playerData.getCoins());
         } else if (profile.isInFight()) {
             Match match = profile.getMatch();
 
@@ -151,27 +151,26 @@ public class ScoreboardAdapter implements AssembleAdapter {
                     Profile opponentProfile=Profile.getByUuid(opponent.getUuid());
 
                     if (match.getKit().getName().equalsIgnoreCase("Boxing")) {
-                        toReturn.add("&fFighting: &5" + opponent.getUsername());
-                        toReturn.add("&fDuration: &5" + match.getDuration());
+                        toReturn.add("&fFighting: &c" + opponent.getUsername());
+                        toReturn.add("&fDuration: &b" + match.getDuration());
                         toReturn.add("");
                         toReturn.add("&fHits: " + getHitStatus(match, player, opponent));
                         toReturn.add("&a You: &f" + self.getHits() + getComboSelfStatus(match, player, opponent));
                         toReturn.add("&c Them: &f" + opponent.getHits() + getComboOpponentStatus(match, player, opponent));
                         toReturn.add("");
-                        toReturn.add("&fYour Ping: &5" + self.getPing() + "ms");
-                        toReturn.add("&fEnemy Ping: &5" + opponent.getPing() + "ms");
+                        toReturn.add("&fYour Ping: &b" + self.getPing() + "ms");
+                        toReturn.add("&fEnemy Ping: &b" + opponent.getPing() + "ms");
                     } else if (match.getKit().getName().equalsIgnoreCase("Stick-Fight")) {
                         toReturn.add("&a[YOU] &7" + getSumoPoints(player));
                         toReturn.add("&c[THEM] &7" + getSumoPoints(opponent.getPlayer()));
                         toReturn.add("");
-                        toReturn.add("&fCombos: &5" + self.getCombo());
-                        toReturn.add("&fCPS: &a" + GoldenHeads.getCPS(player) + " &7┃ &c" + GoldenHeads.getCPS(opponent.getPlayer()));
+                        toReturn.add("&fCombos: &b" + self.getCombo());
                         toReturn.add("");
-                        toReturn.add("&fYour Ping: &5" + self.getPing() + "ms");
-                        toReturn.add("&fEnemy Ping: &5" + opponent.getPing() + "ms");
+                        toReturn.add("&fYour Ping: &b" + self.getPing() + "ms");
+                        toReturn.add("&fEnemy Ping: &b" + opponent.getPing() + "ms");
                     } else if (match.getKit().getName().equalsIgnoreCase("SkyWars")) {
-                        toReturn.add("&fFighting: &5" + opponent.getUsername());
-                        toReturn.add("&fDuration: &5" + match.getDuration());
+                        toReturn.add("&fFighting: &b" + opponent.getUsername());
+                        toReturn.add("&fDuration: &b" + match.getDuration());
                         toReturn.add("");
                         if (match.getState() == MatchState.FIGHTING) {
                             toReturn.add("&fPvP: &aEnabled");
@@ -190,7 +189,7 @@ public class ScoreboardAdapter implements AssembleAdapter {
                         } else {
                             toReturn.add("&fPvP: &cDisabled");
                         }
-                        toReturn.add("&fMode: &5Gladiator");
+                        toReturn.add("&fMode: &bGladiator");
                         toReturn.add("");
                         toReturn.add("&fYour Ping: &5" + self.getPing() + "ms");
                         toReturn.add("&fEnemy Ping: &5" + opponent.getPing() + "ms");
